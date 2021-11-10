@@ -3,14 +3,11 @@ import java.util.ArrayList;
 
 public class TodoMain {
 	public TodoMain() { 
-		items = new ArrayList<String>();
-		db = new Database();
-		items = db.getTodoItems();
+		items = Database.getTodoItems();
 		frame = new CreateFrame(items);
 	}
 	
-	ArrayList<String> items;
-	Database db;
+	ArrayList<Item> items;
 	CreateFrame frame;
 	
 	public static void main(String[] args) {
