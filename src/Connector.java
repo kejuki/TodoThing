@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class Connector {
 
-	Connection connection = null;
-	Statement statement = null;  
-	ResultSet resultSet = null;
+	static Connection connection = null;
+	static Statement statement = null;  
+	static ResultSet resultSet = null;
 	
-	public ArrayList<String> getItems(String url, String user, String pw){
-		ArrayList<String> items = new ArrayList<String>();
+	public static ArrayList<Item> getItems(String url, String user, String pw){
+		ArrayList<Item> items = new ArrayList<Item>();
 		
 		try{
 	        connection = DriverManager.getConnection(url, user, pw);
@@ -20,7 +20,9 @@ public class Connector {
 	        resultSet = statement.executeQuery("SELECT * FROM items");
 	        
 	        while (resultSet.next()) {
-				items.add(resultSet.getString("item"));
+	        	Item item = new Item(resultSet.getString("item"), resultSet.getBoolean("itemState"));
+	        	System.out.println(item.getItem());
+				items.add(item);
 			}
 			
 		}catch(SQLException ex) {

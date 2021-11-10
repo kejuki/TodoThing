@@ -2,18 +2,16 @@ import java.util.ArrayList;
 
 public class Database extends Connector{
 
-	public ArrayList<String> getTodoItems() {
+	public static ArrayList<Item> getTodoItems() {
 		
-		Connector connector = new Connector();
-
-		ArrayList<String> items = new ArrayList<String>();
+		ArrayList<Item> items = new ArrayList<Item>();
 		
-		String url1 = "jdbc:mysql://localhost:3306/test1";
+		String url1 = "jdbc:mysql://localhost:3306/dbkk";
         String user = "root";
         String password = "qwerty1234";
 		
-		items = connector.getItems(url1, user, password);
-
+		items = getItems(url1, user, password);
+		
 		return items;
 	}
 }
